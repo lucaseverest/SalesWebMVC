@@ -1,4 +1,5 @@
-﻿using SalesWebMVC.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SalesWebMVC.Models;
 
 namespace SalesWebMVC.Data
 {
@@ -11,9 +12,9 @@ namespace SalesWebMVC.Data
             _context = context;
         }
 
-        public List<Departament> FindAll()
+        public async Task<List<Departament>> FindAllAsync()
         {
-            return [.. _context.Departament.OrderBy(x=>x.Name)];
+            return [.. await _context.Departament.OrderBy(x => x.Name).ToListAsync()];
         }
 
         public void Insert(Seller obj)

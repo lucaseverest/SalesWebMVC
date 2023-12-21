@@ -15,6 +15,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
 builder.Services.AddScoped<DepartamentService>();
+builder.Services.AddScoped<SalesRecordService>();
+
 
 var app = builder.Build();
 
@@ -43,6 +45,7 @@ using (var serviceScope = app.Services.CreateScope())
     services.GetRequiredService<SeedingService>().Seed();
     services.GetRequiredService<SellerService>();
     services.GetRequiredService<DepartamentService>();
+    services.GetRequiredService<SalesRecordService>();
 }
 
 app.UseHttpsRedirection();
